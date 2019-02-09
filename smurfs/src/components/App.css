@@ -26,3 +26,29 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.SmurfVillageBox {
+  border: 2px solid lightskyblue;
+  border-radius:10px;
+  margin: 3%;
+  color: darkblue;
+  background-color: dodgerblue; 
+}
+
+
+.formDiv {
+  border: 2px solid lightskyblue;
+  border-radius: 10px;
+  margin: 3%;
+  background-color: dodgerblue;
+}
+
+.formValues {
+  border: 1px solid lightslategrey;
+  padding: 2%;
+  Margin: 2%;
+}
+
+h1 {
+  color: black;
+}
