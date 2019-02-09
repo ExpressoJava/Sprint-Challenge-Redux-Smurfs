@@ -11,8 +11,8 @@ import {addANewSmurf, getTheSmurfs} from '../actions';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       age: '',
@@ -27,11 +27,39 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <header>
+          <h1>SMURFS! 2.0 W/ Redux</h1>
+          <div>Welcome to your Redux version of Smurfs!</div>
+          <div>Start inside of your `src/index.js` file!</div>
+          <div>Have fun!</div>
+        </header>
+
+        <div className="formDiv">
+          <form onSubmit={this.submitHandler}>
+            <input className="formValues" onChange={this.changeHandler} value={this.state.name} type="text" name="name" placeholder="Enter A Smuffy name Here" ></input>
+            <input className="formValues" onChange={this.changeHandler} value={this.state.age} type="number" name="age" placeholder="Smuffy age?"></input>
+            <input className="formValues" onChange={this.changeHandler} value={this.state.height} type="text" name="height" placeholder="How Tall Is This Smurf?" ></input>
+            <button className="formValues" type="submit">Press Enter To Add This Smurf To The Village!</button>
+          </form>
+        </div>
+        
+        <div className="SmurfVillageBox">
+          {this.props.smurfs.map((eachSmurf, i) => {
+            return (
+            <div key={i}><h3>Smurffy Name:</h3>
+              <h1>{eachSmurf.name}</h1>
+              <h4>Smurffy Age: {eachSmurf.age} </h4>
+              <h4>Smurffy Height: {eachSmurf.height}</h4>
+            </div>);
+          })}
+
+        </div>
+
+        
+      
       </div>
+
+
     );
   }
 }
