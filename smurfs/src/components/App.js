@@ -16,12 +16,24 @@ class App extends Component {
     this.state = {
       name: '',
       age: '',
-      height: ''
+      height: '',
     }
   }
 
   componentDidMount() {
     this.props.getTheSmurfs();
+  }
+
+
+
+  submitHandler = e => {
+    e.preventDefault();
+    this.props.addANewSmurf(this.state);
+    this.setState({name: '', age: '', height: ''})
+  }
+
+  changeHandler = e => {
+    this.setState({[e.target.name]: e.target.value});
   }
 
   render() {
@@ -39,7 +51,7 @@ class App extends Component {
             <input className="formValues" onChange={this.changeHandler} value={this.state.name} type="text" name="name" placeholder="Enter A Smuffy name Here" ></input>
             <input className="formValues" onChange={this.changeHandler} value={this.state.age} type="number" name="age" placeholder="Smuffy age?"></input>
             <input className="formValues" onChange={this.changeHandler} value={this.state.height} type="text" name="height" placeholder="How Tall Is This Smurf?" ></input>
-            <button className="formValues" type="submit">Press Enter To Add This Smurf To The Village!</button>
+            <button className="formValues" type="submit">Add This Smurf To The Village!</button>
           </form>
         </div>
         
@@ -54,15 +66,15 @@ class App extends Component {
           })}
 
         </div>
-
-        
-      
       </div>
-
-
     );
   }
 }
+
+
+
+        
+      
 
 
 const mapStateToProps = state => {
